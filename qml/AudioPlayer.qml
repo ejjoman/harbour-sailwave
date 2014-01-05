@@ -30,7 +30,9 @@ DockedPanel {
 
         _currentStation = station.stationId
 
-        audio.source = station.url
+        console.log(station, station.streamUrl)
+
+        audio.source = station.streamUrl
         audio.play()
 
         showControls()

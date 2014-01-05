@@ -10,8 +10,6 @@ TARGET = harbour-sailwave
 
 CONFIG += sailfishapp
 
-QT += network
-
 SOURCES += src/harbour-sailwave.cpp
 
 OTHER_FILES += qml/harbour-sailwave.qml \
@@ -24,5 +22,7 @@ OTHER_FILES += qml/harbour-sailwave.qml \
     qml/js/ajaxmee.js \
     qml/BigFM.pls \
     qml/AudioPlayer.qml \
-    qml/StationsModel.qml
+    qml/StationsModel.qml \
+    qml/pages/StationEditDialog.qml \
+    qml/Station.qml
 

@@ -35,6 +35,8 @@ Page {
     id: page
 
     SilicaListView {
+        id: view
+
         anchors.fill: parent
         header: PageHeader {
             title: "SailWave WebRadio"
@@ -44,6 +46,7 @@ Page {
 
         delegate: ListItem {
             id: listItem
+            menu: contextMenu
 
             readonly property bool isCurrentlyPlaying: player.currentStation >= 0 && player.currentStation == stationId
 
@@ -65,6 +68,54 @@ Page {
             }
 
             onClicked: player.play(stationId)
+
+            function remove() {
+                remorseAction("Deleting", function() {
+                    stations.removeStation(stationId)
+                });
+            }
+
+            Component {
+                id: contextMenu
+
+                ContextMenu {
+                    MenuItem {
+                        text: "Edit"
+                        onClicked: {
+                            var dialog = pageStack.push("StationEditDialog.qml", {
+                                                            "model": stations,
+                                                            "station": stations.getStationById(stationId)
+                                                        })
+                        }
+                    }
+
+                    MenuItem {
+                        text: "Remove"
+                        onClicked: listItem.remove()
+                    }
+                }
+            }
+        }
+
+        PullDownMenu {
+            MenuItem {
+                text: "Add station"
+
+                onClicked: {
+                    var dialog = pageStack.push("StationEditDialog.qml", {
+                                                    "model": stations
+                                                })
+
+//                    dialog.accepted.connect(function() {
+//                        //displayedName.text = "My name: " + name
+//                    })
+                }
+            }
+        }
+
+        ViewPlaceholder {
+            text: "No stations available. Pull down to add a new station."
+            enabled: view.count == 0
         }
 
         //contentHeight: content.height
@@ -110,6 +161,12 @@ Page {
 //        }
 
         VerticalScrollDecorator {}
+    }
+
+    Component {
+        id: stationEditDialog
+
+        StationEditDialog {}
     }
 }
 
