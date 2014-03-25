@@ -5,6 +5,30 @@ import QtMultimedia 5.0
 DockedPanel {
     id: player
 
+    Connections {
+        target: Qt.inputMethod
+
+        onVisibleChanged: {
+            if (Qt.inputMethod.visible) {
+                if (player.playing || player.paused) {
+                    player._closedByUser = false
+                    player.hide();
+                    player._closedByUser = true
+                }
+            } else {
+                player.showControls();
+            }
+        }
+    }
+
+    SleepTimer {
+        id: timer
+
+        onSleepTimerTriggered: {
+            player.stop();
+        }
+    }
+
     dock: Dock.Bottom
     //open: audio.playbackState != Audio.StoppedState
 
@@ -14,10 +38,21 @@ DockedPanel {
     flickableDirection: Flickable.VerticalFlick
 
     property StationsModel stations
+
+    readonly property bool active: open
     readonly property bool playing: audio.playbackState == Audio.PlayingState
+    readonly property bool paused: audio.playbackState == Audio.PausedState
     readonly property int currentStation: _currentStation
+    readonly property SleepTimer sleepTimer: timer
+    property alias durationTimer: _durationTimer
+    property alias status: audio.status
 
     property int _currentStation: -1
+    property bool _closedByUser: true
+
+    onCurrentStationChanged: {
+        durationTimer.reset();
+    }
 
     function play(id) {
         var station = player.stations.getById(id)
@@ -25,8 +60,8 @@ DockedPanel {
         if (!station)
             return
 
-        if (audio.playbackState != Audio.StoppedState)
-            audio.stop()
+        if (audio.playbackState !== Audio.StoppedState)
+            player.stop()
 
         _currentStation = station.stationId
 
@@ -35,28 +70,66 @@ DockedPanel {
         audio.source = station.streamUrl
         audio.play()
 
-        showControls()
+        player.showControls()
+    }
+
+    function stop() {
+        if (audio.playbackState !== Audio.StoppedState) {
+            // stop playback
+            audio.stop()
+
+            // stop streaming
+            audio.source = ""
+        }
+    }
+
+    function toggle() {
+        if (audio.playbackState == Audio.StoppedState && stations.count === 0)
+            return;
+
+        if (audio.playbackState == Audio.PlayingState) {
+            audio.pause();
+        } else {
+            if (currentStation < 0)
+                playNext(); // Play first station
+            else
+                audio.play();
+        }
     }
 
     function showControls() {
-        if (playing)
-            open = true
+        if (player.playing || player.paused)
+            player.open = true
     }
 
-    function hideControls() {
-        open = false
+    function playNext() {
+        if (stations.count === 0)
+            return;
+
+        var nextStation = null;
+
+        if (currentStation < 0 || stations.indexOf(currentStation) === stations.count - 1)
+            nextStation = stations.get(0);
+        else
+            nextStation = stations.get(stations.indexOf(currentStation) + 1);
+
+        if (nextStation)
+            play(nextStation.stationId);
     }
 
     onOpenChanged: {
-        if (!open)
-            audio.stop();
+        // stop playback when player is closed by user...
+
+        if (!player.open && player._closedByUser)
+            player.stop();
     }
 
-    Image {
-        width: parent.width
-        fillMode: Image.PreserveAspectFit
-        source: "image://theme/graphic-gradient-edge"
-    }
+//    Image {
+//        width: parent.width
+//        fillMode: Image.PreserveAspectFit
+//        source: "image://theme/graphic-gradient-edge"
+//        //source: "image://theme/graphic-gradient-home-top"
+//    }
 
     Column {
         id: column
@@ -68,7 +141,6 @@ DockedPanel {
         IconButton {
             id: playPause
             anchors.horizontalCenter: parent.horizontalCenter
-
             icon.source: audio.playbackState == Audio.PlayingState ? "image://theme/icon-m-pause?" + Theme.highlightColor : "image://theme/icon-m-play"
 
             onClicked: audio.toggle()
@@ -77,11 +149,36 @@ DockedPanel {
         ProgressBar {
             id: progress
             width: parent.width
-
             indeterminate: true
-            visible: audio.status == 2 || audio.status == 4
+            visible: label !== ""
+        }
+
+        Label {
+            visible: !progress.visible
+            text: durationFormatter.formatPlaybackDuration(durationTimer.duration);
+            anchors.horizontalCenter: parent.horizontalCenter
         }
     }
+
+    Timer {
+        id: _durationTimer
+        running: audio.playbackState === Audio.PlayingState && audio.status === Audio.Buffered
+        repeat: true
+        interval: 1000
+
+        property date duration: new Date(0, 0, 0, 0, 0, 0, 0)
+
+        onTriggered: {
+            duration = new Date(0, 0, 0, duration.getHours(), duration.getMinutes(), duration.getSeconds()+1, 0)
+        }
+
+        function reset() {
+            stop()
+            duration = new Date(0, 0, 0, 0, 0, 0, 0)
+        }
+    }
+
+
 
     Audio {
         id: audio
@@ -89,25 +186,15 @@ DockedPanel {
         autoLoad: false
         autoPlay: false
 
-        function toggle() {
-            if (playbackState == Audio.StoppedState)
-                return;
-
-            if (playbackState == Audio.PlayingState)
-                audio.pause();
-            else
-                audio.play();
-        }
-
         onStatusChanged: {
             switch (status) {
             case Audio.Buffering:
             case Audio.Stalled:
-                progress.label = "Buffering..."
+                progress.label = qsTr("Buffering...")
                 break;
 
-            case 2:
-                progress.label = "Loading..."
+            case Audio.Loading:
+                progress.label = qsTr("Loading...")
                 break;
 
             default:
@@ -121,8 +208,27 @@ DockedPanel {
         onPlaybackStateChanged: {
             console.log("[Audio]", "PlaybackState changed:", playbackState)
 
-            if (playbackState == Audio.StoppedState)
-                _currentStation = -1
+            if (playbackState == Audio.StoppedState) {
+                player._currentStation = -1
+                player.hide()
+            }
+        }
+    }
+
+    Timer {
+        interval: 5000
+        running: player.playing
+        repeat: true
+
+        onTriggered: {
+            console.log("[Player]", "[Metadata]");
+
+            for (var m in audio.metaData) {
+                //if (!audio.metaData[m] || typeof audio.metaData[m] == "function")
+                //    continue;
+
+                console.log("\t", "[Player]", "[Metadata]", m, audio.metaData[m]);
+            }
         }
     }
 }

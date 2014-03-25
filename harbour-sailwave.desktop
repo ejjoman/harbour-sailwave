@@ -1,7 +1,6 @@
 [Desktop Entry]
 Type=Application
 X-Nemo-Application-Type=silica-qt5
-Name=harbour-sailwave
+Name=SailWave
 Icon=harbour-sailwave
 Exec=harbour-sailwave
-

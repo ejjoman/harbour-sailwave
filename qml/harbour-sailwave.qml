@@ -50,6 +50,10 @@ ApplicationWindow
         CoverPage {}
     }
 
+    DurationFormatter {
+        id: durationFormatter
+    }
+
     StationsModel {
         id: stations
     }
@@ -59,5 +63,6 @@ ApplicationWindow
         stations: stations
     }
 }
+
 
 

@@ -33,11 +33,12 @@ ListModel {
         return db;
     }
 
-    function load() {
+    function load(update) {
         console.log("loading model")
 
         __db().transaction(function(tx) {
-            root.clear();
+            if (!update)
+                root.clear();
 
             var results = tx.executeSql("SELECT * FROM MyStations ORDER BY name")
 
@@ -46,14 +47,36 @@ ListModel {
 
                 var component = Qt.createComponent("Station.qml") //new Station()
 
-                if (component.status == Component.Ready) {
-                    var s = component.createObject(null, {
-                                                       stationId: row.id,
-                                                       name: row.name,
-                                                       streamUrl: row.stream
-                                                   })
+                if (component.status === Component.Ready) {
+                    var stationId = row.id;
 
-                    root.append(s);
+                    var updated = false;
+
+                    if (update) {
+                        var index = root.indexOf(stationId);
+
+                        if (index > -1) {
+                            var station = root.get(root.indexOf(stationId));
+                            station.name = row.name;
+                            station.streamUrl = row.stream;
+
+                            updated = true;
+                        }
+                    }
+
+                    if (!updated) {
+                        var s = component.createObject(null, {
+                                                           stationId: row.id,
+                                                           name: row.name,
+                                                           streamUrl: row.stream
+                                                       })
+                        if (update)
+                            root.insert(i, s)
+                        else
+                            root.append(s);
+                    }
+
+
                 }
             }
         })
@@ -78,7 +101,7 @@ ListModel {
 
         console.log("station added", station)
 
-        root.load();
+        root.load(true);
     }
 
     function _update(station) {
@@ -91,11 +114,16 @@ ListModel {
         __db().transaction(function(tx) {
             var update = 'UPDATE MyStations SET name=?, stream=? WHERE id=?'
             tx.executeSql(update, [station.name, station.streamUrl, station.stationId])
+
+            //var li = root.get(root.indexOf(station.stationId))
+            //li.name = station.name
+            //li.streamUrl = station.streamUrl
+
+            console.log("station updated", station)
+
+            root.load(true);
+
         })
-
-        console.log("station updated", station)
-
-        root.load();
     }
 
     function addOrUpdate(station) {
@@ -125,21 +153,37 @@ ListModel {
         if (station.stationId < 0)
             return;
 
+        if (player.currentStation > -1 && player.currentStation === station.stationId)
+            player.stop()
+
         __db().transaction(function(tx) {
             var del = 'DELETE FROM MyStations WHERE id=?'
             tx.executeSql(del, [station.stationId])
+
+            root.remove(root.indexOf(station.stationId))
         })
 
-        root.load()
+
+
+        //root.load(true)
     }
 
-    function getById(id) {
+    function indexOf(id) {
         for(var i=0; i < root.count; i++) {
             var item = root.get(i)
 
-            if (item.stationId == id)
-                return item
+            if (item.stationId === id)
+                return i
         }
+
+        return -1;
+    }
+
+    function getById(id) {
+        var index = root.indexOf(id);
+
+        if (index > -1)
+            return root.get(index);
 
         return null;
     }
@@ -163,5 +207,5 @@ ListModel {
         }
     }
 
-    Component.onCompleted: root.load()
+    Component.onCompleted: root.load(false)
 }

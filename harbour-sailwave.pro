@@ -9,6 +9,7 @@
 TARGET = harbour-sailwave
 
 CONFIG += sailfishapp
+QT += multimedia
 
 SOURCES += src/harbour-sailwave.cpp
 
@@ -24,5 +25,15 @@ OTHER_FILES += qml/harbour-sailwave.qml \
     qml/AudioPlayer.qml \
     qml/StationsModel.qml \
     qml/pages/StationEditDialog.qml \
-    qml/Station.qml
+    qml/Station.qml \
+    qml/SearchBox.qml \
+    qml/StationDelegate.qml \
+    qml/pages/SleepTimerDialog.qml \
+    qml/SleepTimer.qml \
+    qml/DurationFormatter.qml \
+    qml/images/radio.png \
+    qml/common/PulseAnimation.qml \
+    qml/pages/CheckStationPage.qml
+
+HEADERS +=
 
