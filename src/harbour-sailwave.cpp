@@ -32,10 +32,34 @@
 #include <QtQuick>
 #endif
 
+#include <QtQuick>
 #include <sailfishapp.h>
+#include "sailwave.h"
+
+static QObject *sailwave_singleton_provider(QQmlEngine *engine, QJSEngine *scriptEngine)
+{
+    Q_UNUSED(engine);
+    Q_UNUSED(scriptEngine);
+
+    static Sailwave *sailwave_singleton = NULL;
+
+    if (!sailwave_singleton)
+        sailwave_singleton = new Sailwave();
+
+    return sailwave_singleton;
+}
 
 int main(int argc, char *argv[])
 {
-    return SailfishApp::main(argc, argv);
+    qmlRegisterSingletonType<Sailwave>("harbour.sailwave", 1, 0, "Sailwave", sailwave_singleton_provider);
+
+    QGuiApplication *app = SailfishApp::application(argc, argv);
+
+    QQuickView *view = SailfishApp::createView();
+    view->setSource(SailfishApp::pathTo("qml/harbour-sailwave.qml"));
+
+    view->show();
+
+    return app->exec();
 }
 

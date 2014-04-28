@@ -31,27 +31,23 @@
 import QtQuick 2.0
 import QtQuick.LocalStorage 2.0
 import Sailfish.Silica 1.0
-import QtFeedback 5.0
 
 import "pages"
 import "cover"
+import "common"
 
 ApplicationWindow
 {
     id: window
-
     bottomMargin: player.visibleSize
-
-    initialPage: Component {
-        MainPage {}
-    }
+    initialPage: mainPage
 
     cover: Component {
         CoverPage {}
     }
 
-    DurationFormatter {
-        id: durationFormatter
+    MainPage {
+        id: mainPage
     }
 
     StationsModel {
@@ -61,6 +57,36 @@ ApplicationWindow
     AudioPlayer {
         id: player
         stations: stations
+    }
+
+    Banner {
+        id: banner
+    }
+
+    InfoPopup {
+        id: popup
+    }
+
+    Settings {
+        id: settings
+    }
+
+    Component {
+        id: checkStationPage
+
+        CheckStationPage {}
+    }
+
+    Component {
+        id: sleepTimerDialog
+
+        SleepTimerDialog {}
+    }
+
+    Component {
+        id: stationEditDialog
+
+        StationEditDialog {}
     }
 }
 

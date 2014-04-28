@@ -30,10 +30,11 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import ".."
+import "../common"
+import "../js/DurationFormatter.js" as DurationFormatter
 
 Page {
-    id: page
+    id: mainPage
 
     SilicaListView {
         id: list
@@ -44,38 +45,49 @@ Page {
 
             MenuItem {
                 text: qsTr("About")
+                onClicked: {
+                    pageStack.push("AboutPage.qml")
+                }
+            }
+
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: {
+                    pageStack.push("SettingsDialog.qml")
+                }
             }
 
             MenuItem {
                 text: qsTr("Sleep timer") + (player.sleepTimer.active ?
-                                                 ": <b>" + durationFormatter.formatSleepTimerDuration(player.sleepTimer.timeTillTriggering) + "</b>"
+                                                 ": <b>" + DurationFormatter.formatSleepTimerDuration(player.sleepTimer.timeTillTriggering) + "</b>"
                                                : "")
 
                 onClicked: {
                     if (player.sleepTimer.active) {
                         remorse.execute(qsTr("Sleep timer gets stopped"), function() {
                             player.sleepTimer.stopSleepTimer();
-                        });
+                        })
                     } else {
-                        var dialog = pageStack.push("SleepTimerDialog.qml", {
-                                                        "player": player
-                                                    })
+                        pageStack.push(sleepTimerDialog)
                     }
                 }
             }
 
             MenuItem {
-                text: "Add station"
+                text: qsTr("Add station")
                 onClicked: {
-                    var dialog = pageStack.push("StationEditDialog.qml", {
-                                                    "model": stations
-                                                })
+                    var dialog = pageStack.push(stationEditDialog)
                 }
             }
         }
 
         model: stations
-        delegate: StationDelegate {}
+
+        delegate: StationDelegate {
+            stationsModel: stations
+            successDestination: mainPage
+        }
+
         header: PageHeader {
             id: header
             title: qsTr("Stations")
@@ -91,12 +103,6 @@ Page {
 
     RemorsePopup {
         id: remorse
-    }
-
-    Component {
-        id: stationEditDialog
-
-        StationEditDialog {}
     }
 }
 

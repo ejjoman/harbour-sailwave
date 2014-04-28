@@ -4,18 +4,6 @@ import QtQuick.LocalStorage 2.0
 ListModel {
     id: root
 
-    //    ListElement {
-    //        stationId: 1
-    //        name: "BigFM"
-    //        url: "http://217.151.152.245:80/bigfm-mp3-64"
-    //    }
-
-    //    ListElement {
-    //        stationId: 2
-    //        name: "RPR1"
-    //        url: "http://rpr1.fmstreams.de/stream1"
-    //    }
-
     function __db() {
         var db = LocalStorage.openDatabaseSync("sailwave", "", "SailWave database", 1000000, function(db) {
             db.transaction(function(tx) {
@@ -110,30 +98,21 @@ ListModel {
 
         console.log("update station", station)
 
-
         __db().transaction(function(tx) {
             var update = 'UPDATE MyStations SET name=?, stream=? WHERE id=?'
             tx.executeSql(update, [station.name, station.streamUrl, station.stationId])
 
-            //var li = root.get(root.indexOf(station.stationId))
-            //li.name = station.name
-            //li.streamUrl = station.streamUrl
-
             console.log("station updated", station)
 
             root.load(true);
-
         })
     }
 
-    function addOrUpdate(station) {
+    function addOrUpdateWithStation(station) {
         console.log("addOrUpdate", station)
 
         if (!_isStation(station))
             return
-
-        console.log(station, "is a station")
-        console.log("ID of station:", station.stationId)
 
         if (station.stationId < 0)
             root._add(station)
@@ -162,10 +141,6 @@ ListModel {
 
             root.remove(root.indexOf(station.stationId))
         })
-
-
-
-        //root.load(true)
     }
 
     function indexOf(id) {

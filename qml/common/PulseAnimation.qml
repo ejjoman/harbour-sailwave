@@ -4,7 +4,7 @@ SequentialAnimation {
     id: root
 
     property QtObject target: parent ? parent : undefined
-    property int duration: 1000
+    property int duration: 2000
 
     running: false
     alwaysRunToEnd: true

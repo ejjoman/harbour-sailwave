@@ -1,11 +1,11 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import ".."
+import "../common"
 
 TimePickerDialog {
     id: root
 
-    property AudioPlayer player: null
+    //property AudioPlayer player: null
 
     timeText: qsTr("Sleep timer")
 

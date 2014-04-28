@@ -32,6 +32,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 import QtMultimedia 5.0
 import "../common"
+import "../js/DurationFormatter.js" as DurationFormatter
 
 CoverBackground {
     Image {
@@ -48,7 +49,7 @@ CoverBackground {
         height: 2/3 * parent.height
 
 
-        opacity: .2
+        opacity: .15
     }
 
     function _updateSlideshow() {
@@ -129,7 +130,7 @@ CoverBackground {
                     horizontalAlignment: contentWidth > width ? Text.AlignLeft : Text.AlignHCenter
 
                     font.pixelSize: Theme.fontSizeHuge
-                    text: durationFormatter.formatPlaybackDuration(player.durationTimer.duration)
+                    text: DurationFormatter.formatPlaybackDuration(player.durationTimer.duration)
 
                     opacity: player.playing ? 1 : 0.4
                 }
@@ -147,13 +148,12 @@ CoverBackground {
                         running: !sleepTimerResetTimer.timeout
                     }
 
-
                     font.pixelSize: Theme.fontSizeHuge
                     color: Theme.highlightColor
                     truncationMode: TruncationMode.Fade
                     horizontalAlignment: contentWidth > width ? Text.AlignLeft : Text.AlignHCenter
 
-                    text: durationFormatter.formatSleepTimerDuration(player.sleepTimer.timeTillTriggering, true)
+                    text: DurationFormatter.formatSleepTimerDuration(player.sleepTimer.timeTillTriggering, true)
                 }
             }
 
@@ -254,7 +254,13 @@ CoverBackground {
         }
 
         CoverAction {
-            iconSource: player.sleepTimer.active ? "image://theme/icon-cover-refresh" : "image://theme/icon-cover-next-song"
+            iconSource: {
+                if (player.sleepTimer.active)
+                    return sleepTimerResetTimer.timeout ? "image://theme/icon-cover-refresh" : "image://theme/icon-cover-cancel"
+
+                return "image://theme/icon-cover-next-song"
+            }
+
             onTriggered: {
                 if (player.sleepTimer.active) {
                     if (!sleepTimerResetTimer.timeout) {

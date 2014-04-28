@@ -1,6 +1,6 @@
 Name: harbour-sailwave
 Summary: SailWave is a simple and fast internet radio player
-Version: 0.0.1
+Version: 0.1.0
 Release: 1
 Group: Qt/Qt
 URL: http://example.org/
@@ -8,22 +8,24 @@ License: LICENSE
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |
-  Short description of my SailfishOS Application
+  SailWave is a simple and fast internet radio player application.
+  Currently, it allows to add internet radio stations by copying the URL of the station.
 Configure: none
 Builder: qtc5
 PkgConfigBR:
-- sailfishapp >= 0.0.10
-- Qt5Core
-- Qt5Qml
 - Qt5Quick
+- Qt5Qml
+- Qt5Core
+- sailfishapp >= 0.0.10
 Requires:
 - sailfishsilica-qt5 >= 0.10.9
 Files:
-- /usr/share/icons/hicolor/86x86/apps
-- /usr/share/applications
-- /usr/share/harbour-sailwave
-- /usr/bin
-- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
-- '%{_datadir}/applications/%{name}.desktop'
-- '%{_datadir}/%{name}/qml'
 - '%{_bindir}'
+- '%{_datadir}/%{name}/qml'
+- '%{_datadir}/applications/%{name}.desktop'
+- '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
+- /usr/bin
+- /usr/share/harbour-sailwave
+- /usr/share/applications
+- /usr/share/icons/hicolor/86x86/apps
+PkgBR: []
