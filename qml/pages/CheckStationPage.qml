@@ -10,10 +10,10 @@ Dialog {
     forwardNavigation: false
 
     onStatusChanged: {
-        if (status !== PageStatus.Active)
-            return
-
-        player.validateStream(root.station.streamUrl)
+        if (status === PageStatus.Active)
+            player.validateStream(root.station.streamUrl)
+        else if(status === PageStatus.Inactive)
+            player.resumePlayback()
     }
 
     onRejected: player.cancelValidation()

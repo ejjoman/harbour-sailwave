@@ -31,7 +31,6 @@ OTHER_FILES += qml/harbour-sailwave.qml \
     rpm/harbour-sailwave.yaml \
     harbour-sailwave.desktop \
     translations/*.ts \
-    qml/common/Banner.qml \
     qml/common/Settings.qml \
     qml/pages/SettingsDialog.qml \
     qml/pages/AboutPage.qml \
@@ -42,7 +41,8 @@ OTHER_FILES += qml/harbour-sailwave.qml \
     qml/common/InfoPopup.qml
 
 CONFIG += sailfishapp_i18n
-TRANSLATIONS += translations/harbour-sailwave-de.ts
+TRANSLATIONS += translations/harbour-sailwave-de.ts \
+    translations/harbour-sailwave-sv.ts
 
 HEADERS += \
     src/sailwave.h

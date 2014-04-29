@@ -35,7 +35,7 @@ import Sailfish.Silica 1.0
 import "pages"
 import "cover"
 import "common"
-
+// Test
 ApplicationWindow
 {
     id: window
@@ -57,10 +57,6 @@ ApplicationWindow
     AudioPlayer {
         id: player
         stations: stations
-    }
-
-    Banner {
-        id: banner
     }
 
     InfoPopup {

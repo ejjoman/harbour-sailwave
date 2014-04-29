@@ -138,7 +138,11 @@ DockedPanel {
         if (player.playing || player.paused) {
             _lastPlayedStation = _currentStation
             player.stop()
+        } else {
+            _lastPlayedStation = -1
         }
+
+        _hadErrorWhileValidation = false
 
         player._isValidateMode = true;
         audio.autoLoad = true;
@@ -146,26 +150,28 @@ DockedPanel {
     }
 
     function cancelValidation() {
-        _endValidation(false);
+        endValidation(false);
     }
 
-    function _endValidation(emitSignal) {
+    function resumePlayback() {
+        if (player._lastPlayedStation > -1)
+            player.play(_lastPlayedStation);
+    }
+
+    property bool _hadErrorWhileValidation: false
+
+    function endValidation(emitSignal) {
         if (!player._isValidateMode)
             return;
 
         player._isValidateMode = false;
 
         if (emitSignal)
-            player.validationFinished(status == Audio.Loaded)
+            player.validationFinished(status === Audio.Loaded)
 
-        audio.autoLoad = false;
         //audio.source = "";
-
-        if (player._lastPlayedStation > -1)
-            player.play(_lastPlayedStation);
-        else
-            audio.source = "";
-
+        audio.autoLoad = false;
+        audio.stop()
     }
 
     onOpenChanged: {
@@ -190,8 +196,27 @@ DockedPanel {
         ProgressBar {
             id: progress
             width: parent.width
-            indeterminate: true
+            indeterminate: audio.status === Audio.Loading
+            value: audio.bufferProgress
             visible: progress.label !== ""
+
+            Behavior on value {
+                NumberAnimation {}
+            }
+
+            label: {
+                switch (audio.status) {
+                case Audio.Buffering:
+                case Audio.Stalled:
+                    return qsTr("Buffering...")
+
+                case Audio.Loading:
+                    return qsTr("Loading...")
+
+                default:
+                    return ""
+                }
+            }
         }
 
         Label {
@@ -222,10 +247,20 @@ DockedPanel {
     Audio {
         id: audio
 
+        property bool _hadInvalidMedia: false
+
         autoLoad: false
         autoPlay: false
 
         onError: {
+            console.log("[Audio]", "Error", error, errorString)
+
+            // Suppress "wrong" errors
+            if (!audio._hadInvalidMedia)
+                return;
+
+            audio._hadInvalidMedia = false
+
             var errorMessage = "";
 
             switch (error) {
@@ -261,34 +296,14 @@ DockedPanel {
         }
 
         onStatusChanged: {
-            if (player._isValidateMode) {
-                console.log("[Audio]", "[Validation]", "Status changed:", status)
+            console.log("[Audio]", "Status changed:", status)
+            console.log("[Audio]", "Validate mode:", player._isValidateMode)
 
-                if (status === MediaPlayer.Loading)
-                    return;
+            if (status === Audio.InvalidMedia || status === Audio.UnknownStatus)
+                _hadInvalidMedia = true
 
-                _endValidation(true);
-
-            } else {
-                console.log("[Audio]", "[Playback]", "Status changed:", status)
-
-                switch (status) {
-                case Audio.Buffering:
-                case Audio.Stalled:
-                    progress.label = qsTr("Buffering...")
-                    break;
-
-                case Audio.Loading:
-                    progress.label = qsTr("Loading...")
-                    //progress.visible = true;
-                    break;
-
-                default:
-                    progress.label = ""
-                    //progress.visible = false;
-                    break;
-                }
-            }
+            if (player._isValidateMode && status !== MediaPlayer.Loading)
+                endValidation(true);
         }
 
         onPlaybackStateChanged: {
