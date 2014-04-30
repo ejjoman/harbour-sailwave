@@ -38,7 +38,8 @@ OTHER_FILES += qml/harbour-sailwave.qml \
     qml/pages/LicensePage.qml \
     qml/images/GPLv3.png \
     qml/js/DurationFormatter.js \
-    qml/common/InfoPopup.qml
+    qml/common/InfoPopup.qml \
+    qml/common/AboutModel.qml
 
 CONFIG += sailfishapp_i18n
 TRANSLATIONS += translations/harbour-sailwave-de.ts \

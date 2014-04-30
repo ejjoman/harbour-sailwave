@@ -5,6 +5,52 @@ import "../common"
 Page {
     id: root
 
+
+    SilicaListView {
+        id: listView
+        anchors.fill: parent
+        model: AboutModel {
+            id: aboutModel
+        }
+
+        header:  PageHeader {
+            title: qsTr("About SailWave")
+        }
+
+        delegate: AboutItem {
+            label: model.title
+            value: model.subTitle
+
+            onClicked: {
+                if (!model.pageFile && !model.url)
+                    return;
+
+                if (model.onClickedRemorse) {
+                    remorseAction(model.onClickedRemorse, function() {
+                        if (model.pageFile)
+                            pageStack.push(model.pageFile)
+                        else
+                            Qt.openUrlExternally(model.url)
+                    })
+                } else {
+                    if (model.pageFile)
+                        pageStack.push(model.pageFile)
+                    else
+                        Qt.openUrlExternally(model.url)
+                }
+
+
+            }
+        }
+
+        section.property: "group"
+        section.criteria: ViewSection.FullString
+        section.delegate: SectionHeader { text: section }
+
+        VerticalScrollDecorator {}
+    }
+
+/*
     SilicaFlickable {
         id: flickable
         anchors.fill: parent
@@ -17,6 +63,10 @@ Page {
 
             PageHeader {
                 title: qsTr("About SailWave")
+            }
+
+            SectionHeader {
+                text: qsTr("Project")
             }
 
             AboutItem {
@@ -38,20 +88,20 @@ Page {
             }
 
             AboutItem {
-                label: qsTr("Author")
-                value: "Michael Neufing <m.neufing@yahoo.de>"
-
-                onClicked: {
-                    openUrlPopup.openUrl("mailto:m.neufing@yahoo.de?subject=SailWave", qsTr("Mail app will open"))
-                }
-            }
-
-            AboutItem {
                 label: qsTr("Report a bug or send a feature request")
                 value: "GitHub Issues"
 
                 onClicked: {
                     openUrlPopup.openUrl("https://github.com/ejjoman/harbour-sailwave/issues")
+                }
+            }
+
+            AboutItem {
+                label: qsTr("Author")
+                value: "Michael Neufing <m.neufing@yahoo.de>"
+
+                onClicked: {
+                    openUrlPopup.openUrl("mailto:m.neufing@yahoo.de?subject=SailWave", qsTr("Mail app will open"))
                 }
             }
 
@@ -76,12 +126,12 @@ Page {
 
         VerticalScrollDecorator {}
     }
-
+*/
     RemorsePopup {
         id: openUrlPopup
 
         function openUrl(url, title) {
-            openUrlPopup.execute(title || qsTr("Link will open"), function(){
+            openUrlPopup.execute(qsTr(title) || qsTr("Link will open"), function(){
                 Qt.openUrlExternally(url);
             })
         }

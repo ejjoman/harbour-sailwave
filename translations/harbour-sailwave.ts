@@ -2,49 +2,112 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
-    <name>AboutPage</name>
+    <name>AboutModel</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="19"/>
-        <source>About SailWave</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="23"/>
+        <location filename="../qml/common/AboutModel.qml" line="20"/>
         <source>Project Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="32"/>
+        <location filename="../qml/common/AboutModel.qml" line="21"/>
+        <source>on GitHub</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="22"/>
+        <location filename="../qml/common/AboutModel.qml" line="29"/>
+        <location filename="../qml/common/AboutModel.qml" line="35"/>
+        <source>Project</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="23"/>
+        <location filename="../qml/common/AboutModel.qml" line="36"/>
+        <location filename="../qml/common/AboutModel.qml" line="50"/>
+        <location filename="../qml/common/AboutModel.qml" line="57"/>
+        <location filename="../qml/common/AboutModel.qml" line="69"/>
+        <source>Link will open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="27"/>
         <source>License</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="41"/>
-        <source>Author</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="45"/>
-        <source>Mail app will open</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="50"/>
+        <location filename="../qml/common/AboutModel.qml" line="33"/>
         <source>Report a bug or send a feature request</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="59"/>
+        <location filename="../qml/common/AboutModel.qml" line="34"/>
+        <source>on GitHub Issues</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="40"/>
+        <location filename="../qml/common/AboutModel.qml" line="42"/>
+        <location filename="../qml/common/AboutModel.qml" line="49"/>
+        <location filename="../qml/common/AboutModel.qml" line="56"/>
+        <source>Author</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="43"/>
+        <source>Mail app will open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="47"/>
         <source>Twitter</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="68"/>
+        <location filename="../qml/common/AboutModel.qml" line="54"/>
         <source>Donate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="84"/>
+        <location filename="../qml/common/AboutModel.qml" line="55"/>
+        <source>via PayPal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="61"/>
+        <source>English translation provided by</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="62"/>
+        <source>Michael Neufing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="63"/>
+        <location filename="../qml/common/AboutModel.qml" line="68"/>
+        <source>Translation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="66"/>
+        <source>Translate this app</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="67"/>
+        <source>on Transifex</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AboutPage</name>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="17"/>
+        <source>About SailWave</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="134"/>
         <source>Link will open</source>
         <translation type="unfinished"></translation>
     </message>
