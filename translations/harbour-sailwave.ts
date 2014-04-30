@@ -108,11 +108,6 @@
         <source>About SailWave</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="134"/>
-        <source>Link will open</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>AudioPlayer</name>
