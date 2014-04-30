@@ -1,48 +1,113 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.0">
 <context>
-    <name>AboutPage</name>
+    <name>AboutModel</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="19"/>
-        <source>About SailWave</source>
-        <translation>Über SailWave</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="23"/>
+        <location filename="../qml/common/AboutModel.qml" line="9"/>
         <source>Project Home</source>
         <translation>Projekt-Homepage</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="32"/>
+        <location filename="../qml/common/AboutModel.qml" line="10"/>
+        <source>on GitHub</source>
+        <translation>auf GitHub</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="11"/>
+        <location filename="../qml/common/AboutModel.qml" line="18"/>
+        <location filename="../qml/common/AboutModel.qml" line="24"/>
+        <source>Project</source>
+        <translation>Projekt</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="12"/>
+        <location filename="../qml/common/AboutModel.qml" line="25"/>
+        <location filename="../qml/common/AboutModel.qml" line="39"/>
+        <location filename="../qml/common/AboutModel.qml" line="46"/>
+        <location filename="../qml/common/AboutModel.qml" line="61"/>
+        <source>Link will open</source>
+        <translation>Link wird geöffnet</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="16"/>
         <source>License</source>
         <translation>Lizenz</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="41"/>
+        <location filename="../qml/common/AboutModel.qml" line="22"/>
+        <source>Report a bug or send a feature request</source>
+        <translation>Fehler melden oder Verbesserungsvorschlag senden</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="23"/>
+        <source>on GitHub Issues</source>
+        <translation>auf GitHub Issues</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="29"/>
+        <location filename="../qml/common/AboutModel.qml" line="31"/>
+        <location filename="../qml/common/AboutModel.qml" line="38"/>
+        <location filename="../qml/common/AboutModel.qml" line="45"/>
         <source>Author</source>
         <translation>Autor</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="45"/>
+        <location filename="../qml/common/AboutModel.qml" line="32"/>
         <source>Mail app will open</source>
         <translation>E-Mail-App wird geöffnet</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="50"/>
-        <source>Report a bug or send a feature request</source>
-        <translation>Bug-Reports und Vorschläge</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="59"/>
+        <location filename="../qml/common/AboutModel.qml" line="36"/>
         <source>Twitter</source>
         <translation>Twitter</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="68"/>
+        <location filename="../qml/common/AboutModel.qml" line="43"/>
         <source>Donate</source>
         <translation>Spenden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="84"/>
+        <location filename="../qml/common/AboutModel.qml" line="44"/>
+        <source>via PayPal</source>
+        <translation>über PayPal</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="51"/>
+        <source>English translation provided by</source>
+        <extracomment>Use your current language instead of 'English'</extracomment>
+        <translation>Deutsche Übersetzung bereitgestellt von</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="54"/>
+        <source>Michael Neufing</source>
+        <extracomment>Insert the Name(s) of the translator(s) here</extracomment>
+        <translation>Michael Neufing</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="55"/>
+        <location filename="../qml/common/AboutModel.qml" line="60"/>
+        <source>Translation</source>
+        <translation>Übersetzung</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="58"/>
+        <source>Translate this app</source>
+        <translation>Hilf mit, diese App zu übersetzen</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="59"/>
+        <source>on Transifex</source>
+        <translation>auf Transifex</translation>
+    </message>
+</context>
+<context>
+    <name>AboutPage</name>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="17"/>
+        <source>About SailWave</source>
+        <translation>Über SailWave</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="134"/>
         <source>Link will open</source>
         <translation>Link wird geöffnet</translation>
     </message>
@@ -50,42 +115,42 @@
 <context>
     <name>AudioPlayer</name>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="236"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="271"/>
         <source>The stream URL is not valid.</source>
         <translation>Die URL des Streams ist nicht gültig.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="240"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="275"/>
         <source>The stream format is not supported.</source>
         <translation>Das Format des Streams wird nicht unterstützt.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="244"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="279"/>
         <source>The network is not available.</source>
         <translation>Das Netzwerk ist nicht erreichbar.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="248"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="283"/>
         <source>No permessions to access the stream.</source>
         <translation>Keine Berechtigung, um den Stream zu öffnen.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="252"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="287"/>
         <source>The audio service could not be instantiated.</source>
         <translation>Der Audio-Service konnte nicht initialisiert werden.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="256"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="291"/>
         <source>An unknown error occured.</source>
         <translation>Ein unbekannter Fehler ist aufgetreten.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="278"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="211"/>
         <source>Buffering...</source>
         <translation>Puffern...</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="282"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="214"/>
         <source>Loading...</source>
         <translation>Laden...</translation>
     </message>

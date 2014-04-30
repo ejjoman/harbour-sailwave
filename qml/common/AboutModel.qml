@@ -47,7 +47,10 @@ ListModel {
                         url: "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3KSKM9EACDQRS"
                     },
                     {
+                        //: Use your current language instead of 'English'
                         title: qsTr("English translation provided by"),
+
+                        //: Insert the Name(s) of the translator(s) here
                         subTitle: qsTr("Michael Neufing"),
                         group: qsTr("Translation")
                     },
