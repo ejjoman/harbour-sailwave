@@ -24,6 +24,7 @@
         <location filename="../qml/common/AboutModel.qml" line="39"/>
         <location filename="../qml/common/AboutModel.qml" line="46"/>
         <location filename="../qml/common/AboutModel.qml" line="61"/>
+        <location filename="../qml/common/AboutModel.qml" line="68"/>
         <source>Link will open</source>
         <translation>Öppnar länken</translation>
     </message>
@@ -98,6 +99,16 @@
         <source>on Transifex</source>
         <translation>på Transifex</translation>
     </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="65"/>
+        <source>Radio icon created by</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="67"/>
+        <source>Other</source>
+        <translation type="unfinished"/>
+    </message>
 </context>
 <context>
     <name>AboutPage</name>
@@ -110,42 +121,42 @@
 <context>
     <name>AudioPlayer</name>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="271"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="307"/>
         <source>The stream URL is not valid.</source>
         <translation>URL-adressen är ogiltig.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="275"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="311"/>
         <source>The stream format is not supported.</source>
         <translation>Strömningsformatet stöds inte.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="279"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="315"/>
         <source>The network is not available.</source>
         <translation>Nätverket är inte tillgängligt.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="283"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="319"/>
         <source>No permessions to access the stream.</source>
         <translation>Tillstånd att ansluta till dataströmmen nekades.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="287"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="323"/>
         <source>The audio service could not be instantiated.</source>
         <translation>Ljudtjänsten kunde inte instantieras.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="291"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="327"/>
         <source>An unknown error occured.</source>
         <translation>Ett okänt fel uppstod.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="211"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="247"/>
         <source>Buffering...</source>
         <translation>Buffrar...</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="214"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="250"/>
         <source>Loading...</source>
         <translation>Läser in...</translation>
     </message>

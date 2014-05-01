@@ -1,0 +1,9 @@
+[main]
+host = https://www.transifex.com
+
+[harbour-sailwave.sailwave]
+source_lang = en
+source_file = translations/harbour-sailwave.ts
+file_filter = translations/harbour-sailwave-<lang>.ts
+type = QT
+minimum_perc = 100
