@@ -254,6 +254,11 @@ Time format for small sized labels, Hours = 0.</extracomment>
         <source>Stations</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="97"/>
+        <source>No stations available.&lt;br/&gt;Pull down to add a new station.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>SettingsDialog</name>

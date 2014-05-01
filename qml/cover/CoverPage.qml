@@ -178,7 +178,7 @@ CoverBackground {
             lineHeight: Theme.itemSizeMedium / 2
 
             text: player.currentStation > -1 ? stations.getById(player.currentStation).name : ""
-            visible: player.currentStation > -1 && !statusLabel.visible
+            visible: player.currentStation > -1 && !statusLabel.visible && player.active
         }
 
         Label {
@@ -223,16 +223,27 @@ CoverBackground {
     }
 
     CoverActionList {
-        id: notPlayingNoSleeptimerCoverActionList
-
-        enabled: !player.active && !player.sleepTimer.active
+        id: noStationsCoverActionList
+        enabled: !stations.hasStations()
 
         CoverAction {
-            iconSource: "image://theme/icon-cover-play"
-            onTriggered: {
-                sleepTimerResetTimer.reset();
+            iconSource: "image://theme/icon-cover-new"
 
-                timer.goTo(0);
+            onTriggered: {
+                window.activate()
+                pageStack.push(stationEditDialog)
+            }
+        }
+    }
+
+    CoverActionList {
+        id: notPlayingNoSleeptimerCoverActionList
+
+        enabled: (!player.active || stations.count < 2) && !player.sleepTimer.active && !noStationsCoverActionList.enabled
+
+        CoverAction {
+            iconSource: player.playing ? "image://theme/icon-cover-pause" : "image://theme/icon-cover-play"
+            onTriggered: {
                 player.toggle();
             }
         }
@@ -241,7 +252,7 @@ CoverBackground {
     CoverActionList {
         id: playingCoverActionList
 
-        enabled: !notPlayingNoSleeptimerCoverActionList.enabled
+        enabled: !notPlayingNoSleeptimerCoverActionList.enabled && !noStationsCoverActionList.enabled
 
         CoverAction {
             iconSource: player.playing ? "image://theme/icon-cover-pause" : "image://theme/icon-cover-play"

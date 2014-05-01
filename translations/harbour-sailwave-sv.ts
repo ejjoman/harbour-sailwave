@@ -1,48 +1,113 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.0">
 <context>
-    <name>AboutPage</name>
+    <name>AboutModel</name>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="19"/>
-        <source>About SailWave</source>
-        <translation>Om SailWave</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="23"/>
+        <location filename="../qml/common/AboutModel.qml" line="9"/>
         <source>Project Home</source>
         <translation>Projektsidan</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="32"/>
+        <location filename="../qml/common/AboutModel.qml" line="10"/>
+        <source>on GitHub</source>
+        <translation>på GitHub</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="11"/>
+        <location filename="../qml/common/AboutModel.qml" line="18"/>
+        <location filename="../qml/common/AboutModel.qml" line="24"/>
+        <source>Project</source>
+        <translation>Projekt</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="12"/>
+        <location filename="../qml/common/AboutModel.qml" line="25"/>
+        <location filename="../qml/common/AboutModel.qml" line="39"/>
+        <location filename="../qml/common/AboutModel.qml" line="46"/>
+        <location filename="../qml/common/AboutModel.qml" line="61"/>
+        <source>Link will open</source>
+        <translation>Öppnar länken</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="16"/>
         <source>License</source>
         <translation>Licens</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="41"/>
-        <source>Author</source>
-        <translation>Utvecklare</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="45"/>
-        <source>Mail app will open</source>
-        <translation>Öppnar epost-appen</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="50"/>
+        <location filename="../qml/common/AboutModel.qml" line="22"/>
         <source>Report a bug or send a feature request</source>
         <translation>Rapportera en bugg eller skicka en funktionsbegäran</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="59"/>
+        <location filename="../qml/common/AboutModel.qml" line="23"/>
+        <source>on GitHub Issues</source>
+        <translation>på </translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="29"/>
+        <location filename="../qml/common/AboutModel.qml" line="31"/>
+        <location filename="../qml/common/AboutModel.qml" line="38"/>
+        <location filename="../qml/common/AboutModel.qml" line="45"/>
+        <source>Author</source>
+        <translation>Utvecklare</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="32"/>
+        <source>Mail app will open</source>
+        <translation>Öppnar epost-appen</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="36"/>
         <source>Twitter</source>
         <translation>Twitter</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="68"/>
+        <location filename="../qml/common/AboutModel.qml" line="43"/>
         <source>Donate</source>
         <translation>Donera</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AboutPage.qml" line="84"/>
+        <location filename="../qml/common/AboutModel.qml" line="44"/>
+        <source>via PayPal</source>
+        <translation>via PayPal</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="51"/>
+        <source>English translation provided by</source>
+        <extracomment>Use your current language instead of 'English'</extracomment>
+        <translation>Svensk översättning av</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="54"/>
+        <source>Michael Neufing</source>
+        <extracomment>Insert the Name(s) of the translator(s) here</extracomment>
+        <translation>Åke Engelbrektson</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="55"/>
+        <location filename="../qml/common/AboutModel.qml" line="60"/>
+        <source>Translation</source>
+        <translation>Översättning</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="58"/>
+        <source>Translate this app</source>
+        <translation>Översätt den här appen</translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="59"/>
+        <source>on Transifex</source>
+        <translation>på Transifex</translation>
+    </message>
+</context>
+<context>
+    <name>AboutPage</name>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="17"/>
+        <source>About SailWave</source>
+        <translation>Om SailWave</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AboutPage.qml" line="134"/>
         <source>Link will open</source>
         <translation>Öppnar länken</translation>
     </message>
@@ -50,42 +115,42 @@
 <context>
     <name>AudioPlayer</name>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="236"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="271"/>
         <source>The stream URL is not valid.</source>
         <translation>URL-adressen är ogiltig.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="240"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="275"/>
         <source>The stream format is not supported.</source>
         <translation>Strömningsformatet stöds inte.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="244"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="279"/>
         <source>The network is not available.</source>
         <translation>Nätverket är inte tillgängligt.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="248"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="283"/>
         <source>No permessions to access the stream.</source>
         <translation>Tillstånd att ansluta till dataströmmen nekades.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="252"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="287"/>
         <source>The audio service could not be instantiated.</source>
         <translation>Ljudtjänsten kunde inte instantieras.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="256"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="291"/>
         <source>An unknown error occured.</source>
         <translation>Ett okänt fel uppstod.</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="278"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="211"/>
         <source>Buffering...</source>
         <translation>Buffrar...</translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="282"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="214"/>
         <source>Loading...</source>
         <translation>Läser in...</translation>
     </message>

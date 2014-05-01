@@ -182,5 +182,9 @@ ListModel {
         }
     }
 
+    function hasStations() {
+        return root.count > 0
+    }
+
     Component.onCompleted: root.load(false)
 }

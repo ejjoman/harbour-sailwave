@@ -106,11 +106,6 @@
         <source>About SailWave</source>
         <translation>Über SailWave</translation>
     </message>
-    <message>
-        <location filename="../qml/pages/AboutPage.qml" line="134"/>
-        <source>Link will open</source>
-        <translation>Link wird geöffnet</translation>
-    </message>
 </context>
 <context>
     <name>AudioPlayer</name>
@@ -256,6 +251,11 @@ Time format for small sized labels, Hours = 0.</extracomment>
         <location filename="../qml/pages/MainPage.qml" line="93"/>
         <source>Stations</source>
         <translation>Stationen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="97"/>
+        <source>No stations available.&lt;br/&gt;Pull down to add a new station.</source>
+        <translation>Keine Stationen vorhanden.&lt;br/&gt;Herunterziehen, um eine neue Station zu erstellen.</translation>
     </message>
 </context>
 <context>

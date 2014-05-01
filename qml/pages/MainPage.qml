@@ -76,7 +76,7 @@ Page {
             MenuItem {
                 text: qsTr("Add station")
                 onClicked: {
-                    var dialog = pageStack.push(stationEditDialog)
+                    pageStack.push(stationEditDialog)
                 }
             }
         }
@@ -94,7 +94,7 @@ Page {
         }
 
         ViewPlaceholder {
-            text: "No stations available. Pull down to add a new station."
+            text: qsTr("No stations available.<br/>Pull down to add a new station.")
             enabled: list.count == 0
         }
 
