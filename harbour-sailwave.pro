@@ -42,8 +42,10 @@ OTHER_FILES += qml/harbour-sailwave.qml \
     qml/common/AboutModel.qml
 
 CONFIG += sailfishapp_i18n
-TRANSLATIONS += translations/harbour-sailwave-de.ts \
-    translations/harbour-sailwave-sv.ts
+TRANSLATIONS += \
+    translations/harbour-sailwave-de.ts \
+    translations/harbour-sailwave-sv.ts \
+    translations/harbour-sailwave-fi.ts
 
 HEADERS += \
     src/sailwave.h
