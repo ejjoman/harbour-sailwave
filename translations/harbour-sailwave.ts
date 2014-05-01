@@ -112,42 +112,42 @@
 <context>
     <name>AudioPlayer</name>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="271"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="307"/>
         <source>The stream URL is not valid.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="275"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="311"/>
         <source>The stream format is not supported.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="279"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="315"/>
         <source>The network is not available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="283"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="319"/>
         <source>No permessions to access the stream.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="287"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="323"/>
         <source>The audio service could not be instantiated.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="291"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="327"/>
         <source>An unknown error occured.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="211"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="247"/>
         <source>Buffering...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/common/AudioPlayer.qml" line="214"/>
+        <location filename="../qml/common/AudioPlayer.qml" line="250"/>
         <source>Loading...</source>
         <translation type="unfinished"></translation>
     </message>

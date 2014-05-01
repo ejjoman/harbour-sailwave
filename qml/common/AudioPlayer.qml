@@ -120,7 +120,7 @@ DockedPanel {
     }
 
     function playNext() {
-        if (stations.count === 0)
+        if (!stations.hasStations())
             return;
 
         var nextStation = null;
@@ -131,7 +131,22 @@ DockedPanel {
             nextStation = stations.get(stations.indexOf(currentStation) + 1);
 
         if (nextStation)
-            play(nextStation.stationId);
+            player.play(nextStation.stationId);
+    }
+
+    function playPrevious() {
+        if (!stations.hasStations())
+            return;
+
+        var prevStation = null;
+
+        if (currentStation < 0 || stations.indexOf(currentStation) === 0) //stations.count - 1)
+            prevStation = stations.get(stations.count - 1);
+        else
+            prevStation = stations.get(stations.indexOf(currentStation) - 1);
+
+        if (prevStation)
+            player.play(prevStation.stationId);
     }
 
     function validateStream(url) {
@@ -185,12 +200,33 @@ DockedPanel {
 
         spacing: Theme.paddingMedium
 
-        IconButton {
-            id: playPause
-            anchors.horizontalCenter: parent.horizontalCenter
-            icon.source: audio.playbackState == Audio.PlayingState ? "image://theme/icon-m-pause?" + Theme.highlightColor : "image://theme/icon-m-play"
+        Row {
+            width: parent.width
+            height: playPause.height
 
-            onClicked: player.toggle()
+            IconButton {
+                id: playPrev
+                width: parent.width / 3
+                icon.source: "image://theme/icon-m-previous"
+                onClicked: player.playPrevious()
+                enabled: stations.count > 1
+            }
+
+            IconButton {
+                id: playPause
+                width: parent.width / 3
+                icon.source: audio.playbackState == Audio.PlayingState ? "image://theme/icon-m-pause?" + Theme.highlightColor : "image://theme/icon-m-play"
+
+                onClicked: player.toggle()
+            }
+
+            IconButton {
+                id: playNext
+                width: parent.width / 3
+                icon.source: "image://theme/icon-m-next"
+                onClicked: player.playNext()
+                enabled: stations.count > 1
+            }
         }
 
         ProgressBar {
