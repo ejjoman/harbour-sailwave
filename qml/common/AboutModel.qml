@@ -60,6 +60,13 @@ ListModel {
                         group: qsTr("Translation"),
                         onClickedRemorse: qsTr("Link will open"),
                         url: "https://www.transifex.com/projects/p/harbour-sailwave/"
+                    },
+                    {
+                        title: qsTr("Radio icon provided by"),
+                        subTitle: "Icons8",
+                        group: qsTr("Other"),
+                        onClickedRemorse: qsTr("Link will open"),
+                        url: "http://icons8.com"
                     }
                 ]
 

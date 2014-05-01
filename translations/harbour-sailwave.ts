@@ -26,6 +26,7 @@
         <location filename="../qml/common/AboutModel.qml" line="39"/>
         <location filename="../qml/common/AboutModel.qml" line="46"/>
         <location filename="../qml/common/AboutModel.qml" line="61"/>
+        <location filename="../qml/common/AboutModel.qml" line="68"/>
         <source>Link will open</source>
         <translation type="unfinished"></translation>
     </message>
@@ -98,6 +99,16 @@
     <message>
         <location filename="../qml/common/AboutModel.qml" line="59"/>
         <source>on Transifex</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="65"/>
+        <source>Radio icon provided by</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/common/AboutModel.qml" line="67"/>
+        <source>Other</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
