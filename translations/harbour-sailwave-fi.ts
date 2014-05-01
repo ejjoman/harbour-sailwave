@@ -102,12 +102,12 @@
     <message>
         <location filename="../qml/common/AboutModel.qml" line="65"/>
         <source>Radio icon created by</source>
-        <translation type="unfinished"/>
+        <translation>Radiokuvakkeen teki</translation>
     </message>
     <message>
         <location filename="../qml/common/AboutModel.qml" line="67"/>
         <source>Other</source>
-        <translation type="unfinished"/>
+        <translation>Muut</translation>
     </message>
 </context>
 <context>
