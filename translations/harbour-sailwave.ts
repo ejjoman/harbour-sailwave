@@ -103,7 +103,7 @@
     </message>
     <message>
         <location filename="../qml/common/AboutModel.qml" line="65"/>
-        <source>Radio icon provided by</source>
+        <source>Radio icon created by</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

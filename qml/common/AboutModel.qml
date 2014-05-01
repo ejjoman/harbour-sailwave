@@ -62,7 +62,7 @@ ListModel {
                         url: "https://www.transifex.com/projects/p/harbour-sailwave/"
                     },
                     {
-                        title: qsTr("Radio icon provided by"),
+                        title: qsTr("Radio icon created by"),
                         subTitle: "Icons8",
                         group: qsTr("Other"),
                         onClickedRemorse: qsTr("Link will open"),
