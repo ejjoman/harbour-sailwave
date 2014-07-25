@@ -39,8 +39,9 @@ Currently, it allows to add internet radio stations by copying the URL of the st
 # >> build pre
 # << build pre
 
+%qtc_qmake5 
 
-qtc5
+%qtc_make %{?_smp_mflags}
 
 # >> build post
 # << build post
@@ -49,6 +50,7 @@ qtc5
 rm -rf %{buildroot}
 # >> install pre
 # << install pre
+%qmake5_install
 
 # >> install post
 # << install post
