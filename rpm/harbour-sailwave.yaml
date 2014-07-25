@@ -27,6 +27,6 @@ Files:
 - '%{_datadir}/icons/hicolor/86x86/apps/%{name}.png'
 - '%{_bindir}'
 - '%{_datadir}/%{name}'
-- '%{_datadir}applications'
-- '%{_datadir}icons/hicolor/86x86/apps'
+- '%{_datadir}/applications'
+- '%{_datadir}/icons/hicolor/86x86/apps'
 PkgBR: []

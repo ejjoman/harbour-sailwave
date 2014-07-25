@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sv" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="sv">
 <context>
     <name>AboutModel</name>
     <message>
@@ -74,7 +76,7 @@
     <message>
         <location filename="../qml/common/AboutModel.qml" line="51"/>
         <source>English translation provided by</source>
-        <extracomment>Use your current language instead of 'English'</extracomment>
+        <extracomment>Use your current language instead of &apos;English&apos;</extracomment>
         <translation>Svensk översättning av</translation>
     </message>
     <message>
@@ -102,12 +104,12 @@
     <message>
         <location filename="../qml/common/AboutModel.qml" line="65"/>
         <source>Radio icon created by</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../qml/common/AboutModel.qml" line="67"/>
         <source>Other</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -266,7 +268,7 @@ Time format for small sized labels, Hours = 0.</extracomment>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="97"/>
         <source>No stations available.&lt;br/&gt;Pull down to add a new station.</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

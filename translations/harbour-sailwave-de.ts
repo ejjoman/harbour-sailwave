@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.0">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.0" language="de">
 <context>
     <name>AboutModel</name>
     <message>
@@ -74,7 +76,7 @@
     <message>
         <location filename="../qml/common/AboutModel.qml" line="51"/>
         <source>English translation provided by</source>
-        <extracomment>Use your current language instead of 'English'</extracomment>
+        <extracomment>Use your current language instead of &apos;English&apos;</extracomment>
         <translation>Deutsche Übersetzung bereitgestellt von</translation>
     </message>
     <message>
