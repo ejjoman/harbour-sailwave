@@ -12,6 +12,8 @@ Description: |
   Currently, it allows to add internet radio stations by copying the URL of the station.
 Configure: none
 Builder: qtc5
+pkgBR:
+- qt5-qtmultimedia-devel
 PkgConfigBR:
 - Qt5Quick
 - Qt5Qml
