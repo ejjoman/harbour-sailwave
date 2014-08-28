@@ -24,6 +24,7 @@ Requires:   sailfishsilica-qt5 >= 0.10.9
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(sailfishapp) >= 0.0.10
 BuildRequires:  desktop-file-utils
 
@@ -68,9 +69,9 @@ desktop-file-install --delete-original       \
 %{_datadir}/%{name}/qml
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
-/usr/bin
-/usr/share/harbour-sailwave
-/usr/share/applications
-/usr/share/icons/hicolor/86x86/apps
+%{_bindir}
+%{_datadir}/%{name}
+%{_datadir}/applications
+%{_datadir}/icons/hicolor/86x86/apps
 # >> files
 # << files
