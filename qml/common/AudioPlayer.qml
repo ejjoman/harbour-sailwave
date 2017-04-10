@@ -34,6 +34,13 @@ DockedPanel {
     contentHeight: height
     flickableDirection: Flickable.VerticalFlick
 
+    background: Rectangle {
+        gradient: Gradient {
+            GradientStop { position: 0.0; color: "transparent" }
+            GradientStop { position: 0.7; color: Theme.rgba(Theme.highlightBackgroundColor, Theme.highlightBackgroundOpacity) }
+        }
+    }
+
     property StationsModel stations
 
     readonly property bool active: open
@@ -200,6 +207,64 @@ DockedPanel {
 
         spacing: Theme.paddingMedium
 
+        ProgressBar {
+            id: progress
+            width: parent.width
+            indeterminate: audio.status === Audio.Loading
+            value: audio.bufferProgress
+            visible: progress.label !== ""
+
+            Behavior on value {
+                NumberAnimation {}
+            }
+
+            label: {
+                switch (audio.status) {
+                case Audio.Buffering:
+                case Audio.Stalled:
+                    return qsTr("Buffering...")
+
+                case Audio.Loading:
+                    return qsTr("Loading...")
+
+                default:
+                    return ""
+                }
+            }
+        }
+
+        Column {
+            width: parent.width
+
+            Label {
+                id: titleLabel
+
+                width: Math.min(parent.width - 2*Theme.paddingMedium, implicitWidth)
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: Theme.primaryColor
+                truncationMode: TruncationMode.Fade
+                visible: text.length > 0
+            }
+
+            Label {
+                id: publisherLabel
+
+                width: Math.min(parent.width - 2*Theme.paddingMedium, implicitWidth)
+                anchors.horizontalCenter: parent.horizontalCenter
+                color: Theme.secondaryColor
+                font.pixelSize: Theme.fontSizeExtraSmall
+                truncationMode: TruncationMode.Fade
+                visible: text.length > 0
+            }
+        }
+
+
+        Label {
+            visible: !progress.visible
+            text: DurationFormatter.formatPlaybackDuration(durationTimer.duration);
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
         Row {
             width: parent.width
             height: playPause.height
@@ -227,38 +292,6 @@ DockedPanel {
                 onClicked: player.playNext()
                 enabled: stations.count > 1
             }
-        }
-
-        ProgressBar {
-            id: progress
-            width: parent.width
-            indeterminate: audio.status === Audio.Loading
-            value: audio.bufferProgress
-            visible: progress.label !== ""
-
-            Behavior on value {
-                NumberAnimation {}
-            }
-
-            label: {
-                switch (audio.status) {
-                case Audio.Buffering:
-                case Audio.Stalled:
-                    return qsTr("Buffering...")
-
-                case Audio.Loading:
-                    return qsTr("Loading...")
-
-                default:
-                    return ""
-                }
-            }
-        }
-
-        Label {
-            visible: !progress.visible
-            text: DurationFormatter.formatPlaybackDuration(durationTimer.duration);
-            anchors.horizontalCenter: parent.horizontalCenter
         }
     }
 
@@ -331,6 +364,14 @@ DockedPanel {
             popup.show(errorMessage, settings.showDetailedErrorMessage ? errorString : "", 5000)
         }
 
+        function updateMetaData() {
+            console.log("Title:", metaData["title"])
+            console.log("Publisher:", metaData["publisher"])
+
+            titleLabel.text = metaData["title"] || ""
+            publisherLabel.text = metaData["publisher"] || ""
+        }
+
         onStatusChanged: {
             console.log("[Audio]", "Status changed:", status)
             console.log("[Audio]", "Validate mode:", player._isValidateMode)
@@ -350,5 +391,7 @@ DockedPanel {
                 player.hide()
             }
         }
+
+        metaData.onMetaDataChanged: updateMetaData()
     }
 }
